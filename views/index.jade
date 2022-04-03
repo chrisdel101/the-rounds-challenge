@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Add Word
+  form(name="post-data", method="get" action='/word')
+        div.actions
+            input(type="submit", value="Submit")
+  h1 Add Word        
+  form(name="get-data", method="get" action='/word ')
+        div.input
+            span.label(for="post-input") Search for word
+            input(type="text", name="word-search-post" id='post-input')
+        div.actions
+            input(type="submit", value="Submit")
+    - console.log("XX", fetchedWords)
+
+
+   .words 
+    h2 Fetched Words
+    ul.word-list
+     for word in fetchedWords
+      li= word
+     else
+      li no words to dispay yet     
