@@ -1,24 +1,38 @@
 extends layout
 
 block content
-  h1 Add Word
+  h1 Fetch Word
   form(name="post-data", method="get" action='/word')
         div.actions
             input(type="submit", value="Submit")
+  br
+  .succces-msg #{successMsg}
+        
   h1 Add Word        
-  form(name="get-data", method="get" action='/word ')
+  form(name="get-data", method="post" action='/word ')
         div.input
             span.label(for="post-input") Search for word
-            input(type="text", name="word-search-post" id='post-input')
+            input(type="text", name="word-post" id='post-input')
         div.actions
             input(type="submit", value="Submit")
-    - console.log("XX", fetchedWords)
+
+  h1 Delete  Word        
+  form(name="delete-data", method="GET" action='/delete-word ')
+        div.actions
+            input(type="submit", value="Submit")
 
 
-   .words 
+   .fetched-words 
     h2 Fetched Words
-    ul.word-list
+    ul.fetched-word-list
      for word in fetchedWords
       li= word
      else
-      li no words to dispay yet     
+      li no words to display yet     
+   .deleted-words 
+    h2 Deleted Words
+    ul.deleted-word-list
+     for word in deletedWords
+      li= word
+     else
+      li no deleted words to displauy yet   
